@@ -1,0 +1,85 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Assemble Debug"
+  lane :assembleDebug do
+    #gradle(task: "assembleDebug")
+  end
+
+  desc "Assemble Release"
+  lane :assembleRelease do
+    gradle(task: "assembleRelease")
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: ":app:test :data:test")
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store
+  end
+
+  error do |lane, exception|
+ #         slack(
+ #           message: "something when wrong check *Error Info* form more details",  #exception.message,
+ #           channel: "#derdiedas",
+ #           icon_url: "https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+ #           success: false,
+ #           slack_url: ENV["SLACK_WEB_HOOK_URL"],  // test
+ #           payload:{"ErrorInfo" => exception.to_s})
+   end
+
+end
+
+
+def onError(exception)
+#    slack(
+#        message: "something when wrong check *Error Info* form more details",
+#        channel: "#derdiedas",
+#        icon_url: "https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+#        success: false,
+#        slack_url: ENV["SLACK_WEB_HOOK_URL"],
+#        payload:{"ErrorInfo" => exception.to_s}
+#    )
+end
+
+def message_slack(target)
+#   slack(
+#     message: target,
+#     icon_url: "https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+#     fail_on_error: false,
+#     slack_url: "https://hooks.slack.com/services/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",
+#     default_payloads: [:git_branch, :git_author, :last_git_commit_hash]
+#   )
+end
+
+def onSuccess(success_msg)
+#    slack(
+#        message: success_msg,
+#        channel: "#derdiedas",
+#        icon_url: "https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+#        success: true,
+#        slack_url: ENV["SLACK_WEB_HOOK_URL"]
+#    )
+end
+

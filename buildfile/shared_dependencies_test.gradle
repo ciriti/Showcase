@@ -1,0 +1,39 @@
+android {
+    sourceSets {
+        String sharedResources = rootDir.path + '/sharedtestutil/jsonFiles'
+        main {
+            resources.srcDirs += [sharedResources]
+        }
+        test {
+            resources {
+                srcDir sharedResources
+            }
+        }
+        androidTest {
+            java.srcDirs += [sharedResources]
+            resources.srcDirs += [sharedResources]
+        }
+    }
+}
+
+dependencies{
+    // unit tests
+    testImplementation project(":sharedtestutil")
+    testImplementation Libs.mockk
+    testImplementation Libs.core_testing
+    testImplementation Libs.junit_junit
+
+    // UI tests
+    androidTestImplementation project(":sharedtestutil")
+    androidTestImplementation Libs.mockk_android
+    androidTestImplementation Libs.koin_test
+    androidTestImplementation Libs.androidx_test_ext_junit
+
+    androidTestImplementation Libs.androidx_test_runner
+    androidTestImplementation Libs.androidx_test_rules
+    androidTestImplementation Libs.espresso_core
+    androidTestImplementation Libs.uiautomator
+
+
+
+}

@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'de.nanogiants.android-versioning' //https://github.com/nanogiants/android-versioning
+
+apply from: rootDir.path + '/buildfile/signing_configs.gradle'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        archivesBaseName = "book_app"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        applicationId "com.ciriti.bookapp"
+        versionCode versioning.getVersionCode()
+        versionName "0.0.1"//versioning.getVersionName()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+//            applicationIdSuffix ".debug"
+        }
+        staging {
+//            applicationIdSuffix ".beta"
+            signingConfig signingConfigs.release
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// dependencies
+apply from: rootDir.path + '/buildfile/gradle_variable.gradle'
+apply from: rootDir.path + '/buildfile/shared_dependencies.gradle'
+apply from: rootDir.path + '/buildfile/shared_dependencies_test.gradle'
+apply from: rootDir.path + '/buildfile/ktlint.gradle'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":data")
+
+    implementation Libs.android_arch_lifecycle_extensions
+
+    // design
+    implementation Libs.appcompat
+    implementation Libs.core_ktx
+    implementation Libs.constraintlayout
+    implementation Libs.material
+    implementation Libs.cardview
+    implementation Libs.swiperefreshlayout
+
+    // di
+    implementation Libs.koin_core
+    implementation Libs.koin_android_viewmodel
+
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
+
+}
+
+versioning {
+    excludeBuildTypes = "debug" // default: null
+}
+

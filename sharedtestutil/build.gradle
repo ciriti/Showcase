@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.moduleMinSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug { }
+        staging { }
+        release { }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/README.txt'
+    }
+
+    sourceSets {
+        String sharedResources = rootDir.path + '/sharedtestutil/jsonFiles'
+        test {
+            resources {
+                srcDir sharedResources
+            }
+        }
+        androidTest.res.srcDirs += sharedResources
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+}
+
+dependencies {
+
+    implementation Libs.junit_junit
+    implementation Libs.androidx_test_runner
+    implementation Libs.espresso_core
+    implementation Libs.converter_gson
+    implementation Libs.kotlinx_coroutines_android
+    implementation Libs.material
+}
