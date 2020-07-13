@@ -2,21 +2,21 @@
 # [Books App](https://play.google.com/store/apps/details?id=com.ciriti.bookapp)
 
 ## Code quality
-[![CodeFactor](https://www.codefactor.io/repository/github/ciriti/booksapp/badge)](https://www.codefactor.io/repository/github/ciriti/booksapp)
+[![CodeFactor](https://www.codefactor.io/repository/github/ciriti/showcase/badge)](https://www.codefactor.io/repository/github/ciriti/showcase)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/a669f1b025ce42cfa8cb82e47f5d91c9)](https://www.codacy.com/manual/ciriti/BooksApp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ciriti/BooksApp&amp;utm_campaign=Badge_Grade)
 
 ## App status
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/ciriti/BooksApp?color=brightgreen&label=latest%20release)
-![](https://github.com/ciriti/BooksApp/workflows/google%20play%20release/badge.svg)
-![](https://github.com/ciriti/BooksApp/workflows/feature%20workflow/badge.svg)
-![](https://github.com/ciriti/BooksApp/workflows/develop/badge.svg)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/ciriti/Showcase?color=brightgreen&label=latest%20release)
+![](https://github.com/ciriti/Showcase/workflows/google%20play%20release/badge.svg)
+![](https://github.com/ciriti/Showcase/workflows/feature%20workflow/badge.svg)
+![](https://github.com/ciriti/Showcase/workflows/develop/badge.svg)
 
 ## Repo info
 ![](https://img.shields.io/badge/Kotlin-1.3.60-blue)
-![GitHub last commit](https://img.shields.io/github/last-commit/ciriti/BooksApp)
-![GitHub contributors](https://img.shields.io/github/contributors/ciriti/BooksApp?color=orange)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ciriti/BooksApp)
-![GitHub repo size](https://img.shields.io/github/repo-size/ciriti/BooksApp)
+![GitHub last commit](https://img.shields.io/github/last-commit/ciriti/Showcase)
+![GitHub contributors](https://img.shields.io/github/contributors/ciriti/Showcase?color=orange)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ciriti/Showcase)
+![GitHub repo size](https://img.shields.io/github/repo-size/ciriti/Showcase)
 
 # Overview
 
@@ -25,7 +25,7 @@
 ## Development approach
 - Each component was created following the **SOLID** principles. My main goal was to write **scalable**, **testable**, **maintainable** code.
   
-- I've used the  [**Continuous integration**](https://github.com/ciriti/BooksApp/actions) practice so that I was able to regularly merge the code changes into a repository. After each commit, builds and tests were **automatically** run. 
+- I've used the  [**Continuous integration**](https://github.com/ciriti/Showcase/actions) practice so that I was able to regularly merge the code changes into a repository. After each commit, builds and tests were **automatically** run.
   
 ## The project structure
 These are the modules of the project:  
