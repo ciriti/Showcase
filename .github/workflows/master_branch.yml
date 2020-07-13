@@ -115,25 +115,38 @@ jobs:
 #          SLACK_USERNAME: DeployerBot
 #          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
 
-      - name: Fastlane build the release artifact
-        uses: maierj/fastlane-action@v1.4.0
-        with:
-          lane: 'assembleRelease'
+#      - name: Fastlane build the release artifact
+#        uses: maierj/fastlane-action@v1.4.0
+#        with:
+#          lane: 'assembleRelease'
+#
+#      - name: Upload the release artifact to Play Store
+#        run: |
+#          cp app/build/outputs/apk/release/*.apk app/build/outputs/apk/release/app-release.apk
+#          fastlane supply --apk app/build/outputs/apk/release/app-release.apk --rollout $ROLL_OUT_PERCENTAGE
+#
+#      - name: Slack Notification - Release successfully published to Google Play Store
+#        uses: rtCamp/action-slack-notify@master
+#        env:
+#          SLACK_CHANNEL: derdiedas
+#          SLACK_COLOR: '#2EB886'
+#          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+#          SLACK_TITLE:  Release artifact
+#          SLACK_MESSAGE: "has been uploaded on Google Play Store. Initial roll-out at ${{ secrets.ROLL_OUT_PERCENTAGE }} :tada:"
+#          SLACK_USERNAME: DeployerBot
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
 
       - name: Upload the release artifact to Play Store
         run: |
+          ./gradlew assembleRelease
           cp app/build/outputs/apk/release/*.apk app/build/outputs/apk/release/app-release.apk
-          fastlane supply --apk app/build/outputs/apk/release/app-release.apk --rollout $ROLL_OUT_PERCENTAGE
 
       - name: Slack Notification - Release successfully published to Google Play Store
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_CHANNEL: derdiedas
-          SLACK_COLOR: '#2EB886'
-          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
-          SLACK_TITLE:  Release artifact
-          SLACK_MESSAGE: "has been uploaded on Google Play Store. Initial roll-out at ${{ secrets.ROLL_OUT_PERCENTAGE }} :tada:"
-          SLACK_USERNAME: DeployerBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
-
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJson: ${{ SERVICE_ACCOUNT }}
+          packageName: com.ciriti.bookapp
+          releaseFile: app/build/outputs/apk/release/app-release.apk
+          track: beta
+          userFraction: 0.33
 
