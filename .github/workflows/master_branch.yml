@@ -147,6 +147,6 @@ jobs:
           serviceAccountJson: ${{ SERVICE_ACCOUNT }}
           packageName: com.ciriti.bookapp
           releaseFile: app/build/outputs/apk/release/app-release.apk
-          track: beta
+          track: production
           userFraction: 0.33
 
