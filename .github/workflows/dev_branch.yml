@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - develop
-    paths:
-      - '!README.md'
-      - '!art/**'
+#    paths:
+#      - '!README.md'
+#      - '!art/**'
 #  pull_request:
 #    types: [opened, synchronize]
 
