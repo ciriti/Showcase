@@ -16,7 +16,7 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         applicationId "com.ciriti.bookapp"
-        versionCode versioning.getVersionCode()
+        versionCode (250 + versioning.getVersionCode())
         versionName versioning.getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
