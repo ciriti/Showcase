@@ -144,7 +144,7 @@ jobs:
       - name: Slack Notification - Release successfully published to Google Play Store
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJson: ${{ secrets.SERVICE_ACCOUNT }}
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT }}
           packageName: com.ciriti.bookapp
           releaseFile: app/build/outputs/apk/release/app-release.apk
           track: production
