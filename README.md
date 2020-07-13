@@ -90,5 +90,3 @@ fastlane supply --apk app/build/outputs/apk/release/*.apk --rollout 0.1
 
 
 
-
-
