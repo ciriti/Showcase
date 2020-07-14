@@ -84,11 +84,11 @@ jobs:
 #          SLACK_USERNAME: DeployerBot
 #          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
 #
-#      - name: Bump version and push tag
-#        uses: anothrNick/github-tag-action@1.17.2
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          WITH_V: true
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.17.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
 #
 #      - name: Build staging artifact for beta release
 #        run: |
