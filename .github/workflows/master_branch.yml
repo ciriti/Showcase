@@ -41,79 +41,79 @@ jobs:
           echo $GOOGLE_PLAY_KEY_PUBLISH > google_play_key.json
           echo $GOOGLE_SERVICES > app/google-services.json
           chmod +x ./gradlew
-          ./gradlew assembleDebugAndroidTest
-          ./gradlew assembleDebug
-
-      - name: Unit Test
-        run: |
-          ./gradlew :app:test :data:test
-
-      - name: Instrumentation Test - Firebase Test Lab
-        run: |
-          export GRADLE_USER_HOME=$(pwd)/.gradle
-          yes | sdkmanager --licenses && yes | sdkmanager --update
-          wget --quiet --output-document=/tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
-          mkdir -p /opt
-          tar zxf /tmp/google-cloud-sdk.tar.gz --directory /opt
-          /opt/google-cloud-sdk/install.sh --quiet
-          source /opt/google-cloud-sdk/path.bash.inc
-          gcloud components update
-          gcloud config set project $PROJECT_ID
-          echo $SERVICE_ACCOUNT > /tmp/service-account.json
-          gcloud auth activate-service-account --key-file /tmp/service-account.json
-          cp app/build/outputs/apk/debug/app-debug.apk ./app-debug.apk
-          cp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk ./app-debug-androidTest.apk
-          yes | sdkmanager --licenses && yes | sdkmanager --update
-          gcloud firebase test android run   --type instrumentation   --app app-debug.apk   --test app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
-
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-        env:
-          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
-
-      - name: Slack Notification status build
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_CHANNEL: derdiedas
-          SLACK_COLOR: '#3278BD'
-          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
-          SLACK_TITLE:  ${{ steps.extract_branch.outputs.branch }}
-          SLACK_MESSAGE: 'UI and unit tests have been executed successfully! :tada:'
-          SLACK_USERNAME: DeployerBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
-
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.17.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-
-      - name: Build staging artifact for beta release
-        run: |
-          ./gradlew assembleStaging
-          mv app/build/outputs/apk/staging/*.apk app/build/outputs/apk/staging/app-staging.apk
-
-      - name: Upload artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
-        with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          token: ${{secrets.FIREBASE_TOKEN}}
-          groups: testers
-          releaseNotesFile: release_note.txt
-          file: app/build/outputs/apk/staging/app-staging.apk
-
-      - name: Slack notification - Beta release successfully uploaded
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_CHANNEL: derdiedas
-          SLACK_COLOR: '#2EB886'
-          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
-          SLACK_TITLE:  Staging artifact
-          SLACK_MESSAGE: 'has been uploaded on App Distribution :tada:'
-          SLACK_USERNAME: DeployerBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
+#          ./gradlew assembleDebugAndroidTest
+#          ./gradlew assembleDebug
+#
+#      - name: Unit Test
+#        run: |
+#          ./gradlew :app:test :data:test
+#
+#      - name: Instrumentation Test - Firebase Test Lab
+#        run: |
+#          export GRADLE_USER_HOME=$(pwd)/.gradle
+#          yes | sdkmanager --licenses && yes | sdkmanager --update
+#          wget --quiet --output-document=/tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
+#          mkdir -p /opt
+#          tar zxf /tmp/google-cloud-sdk.tar.gz --directory /opt
+#          /opt/google-cloud-sdk/install.sh --quiet
+#          source /opt/google-cloud-sdk/path.bash.inc
+#          gcloud components update
+#          gcloud config set project $PROJECT_ID
+#          echo $SERVICE_ACCOUNT > /tmp/service-account.json
+#          gcloud auth activate-service-account --key-file /tmp/service-account.json
+#          cp app/build/outputs/apk/debug/app-debug.apk ./app-debug.apk
+#          cp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk ./app-debug-androidTest.apk
+#          yes | sdkmanager --licenses && yes | sdkmanager --update
+#          gcloud firebase test android run   --type instrumentation   --app app-debug.apk   --test app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
+#
+#      - name: Extract branch name
+#        shell: bash
+#        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#        id: extract_branch
+#        env:
+#          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
+#
+#      - name: Slack Notification status build
+#        uses: rtCamp/action-slack-notify@master
+#        env:
+#          SLACK_CHANNEL: derdiedas
+#          SLACK_COLOR: '#3278BD'
+#          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+#          SLACK_TITLE:  ${{ steps.extract_branch.outputs.branch }}
+#          SLACK_MESSAGE: 'UI and unit tests have been executed successfully! :tada:'
+#          SLACK_USERNAME: DeployerBot
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
+#
+#      - name: Bump version and push tag
+#        uses: anothrNick/github-tag-action@1.17.2
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          WITH_V: true
+#
+#      - name: Build staging artifact for beta release
+#        run: |
+#          ./gradlew assembleStaging
+#          mv app/build/outputs/apk/staging/*.apk app/build/outputs/apk/staging/app-staging.apk
+#
+#      - name: Upload artifact to Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
+#        with:
+#          appId: ${{secrets.FIREBASE_APP_ID}}
+#          token: ${{secrets.FIREBASE_TOKEN}}
+#          groups: testers
+#          releaseNotesFile: release_note.txt
+#          file: app/build/outputs/apk/staging/app-staging.apk
+#
+#      - name: Slack notification - Beta release successfully uploaded
+#        uses: rtCamp/action-slack-notify@master
+#        env:
+#          SLACK_CHANNEL: derdiedas
+#          SLACK_COLOR: '#2EB886'
+#          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+#          SLACK_TITLE:  Staging artifact
+#          SLACK_MESSAGE: 'has been uploaded on App Distribution :tada:'
+#          SLACK_USERNAME: DeployerBot
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
 
       - name: Fastlane build the release artifact
         uses: maierj/fastlane-action@v1.4.0
