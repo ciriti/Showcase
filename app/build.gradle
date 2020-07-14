@@ -30,9 +30,11 @@ android {
             signingConfig signingConfigs.release
         }
         release {
-            signingConfig signingConfigs.release
-            minifyEnabled false
+            debuggable false
+            minifyEnabled false // TODO set to true
+            shrinkResources false // TODO set to true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
