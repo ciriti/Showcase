@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - 'feature/**'
 #    paths:
 #      - '!README.md'
 #      - '!art/**'
@@ -61,10 +62,10 @@ jobs:
           gcloud config set project $PROJECT_ID
           echo $SERVICE_ACCOUNT > /tmp/service-account.json
           gcloud auth activate-service-account --key-file /tmp/service-account.json
-          cp app/build/outputs/apk/debug/book_app-debug.apk ./book_app-debug.apk
-          cp app/build/outputs/apk/androidTest/debug/book_app-debug-androidTest.apk ./book_app-debug-androidTest.apk
+          cp app/build/outputs/apk/debug/app-debug.apk ./app-debug.apk
+          cp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk ./app-debug-androidTest.apk
           yes | sdkmanager --licenses && yes | sdkmanager --update
-          gcloud firebase test android run   --type instrumentation   --app book_app-debug.apk   --test book_app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
+          gcloud firebase test android run   --type instrumentation   --app app-debug.apk   --test app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
 
       - name: Extract branch name
         shell: bash
