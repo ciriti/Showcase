@@ -5,9 +5,9 @@ on:
     branches:
       - develop
       - 'feature/**'
-#    paths:
-#      - '!README.md'
-#      - '!art/**'
+    paths:
+      - '!README.md'
+      - '!art/**'
 #  pull_request:
 #    types: [opened, synchronize]
 
