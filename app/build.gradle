@@ -12,11 +12,10 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        archivesBaseName = "book_app"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         applicationId "com.ciriti.bookapp"
-        versionCode (250 + versioning.getVersionCode())
+        versionCode (260 + versioning.getVersionCode())
         versionName versioning.getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

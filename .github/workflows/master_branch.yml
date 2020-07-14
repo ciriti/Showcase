@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-    paths:
-      - '!README.md'
-      - '!art/**'
+#    paths:
+#      - '!README.md'
+#      - '!art/**'
 #  pull_request:
 #    types: [opened, synchronize]
 
@@ -61,10 +61,10 @@ jobs:
           gcloud config set project $PROJECT_ID
           echo $SERVICE_ACCOUNT > /tmp/service-account.json
           gcloud auth activate-service-account --key-file /tmp/service-account.json
-          cp app/build/outputs/apk/debug/book_app-debug.apk ./book_app-debug.apk
-          cp app/build/outputs/apk/androidTest/debug/book_app-debug-androidTest.apk ./book_app-debug-androidTest.apk
+          cp app/build/outputs/apk/debug/app-debug.apk ./app-debug.apk
+          cp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk ./app-debug-androidTest.apk
           yes | sdkmanager --licenses && yes | sdkmanager --update
-          gcloud firebase test android run   --type instrumentation   --app book_app-debug.apk   --test book_app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
+          gcloud firebase test android run   --type instrumentation   --app app-debug.apk   --test app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
 
       - name: Extract branch name
         shell: bash
@@ -118,12 +118,7 @@ jobs:
       - name: Fastlane build the release artifact
         uses: maierj/fastlane-action@v1.4.0
         with:
-          lane: 'assembleRelease'
-
-      - name: Upload the release artifact to Play Store
-        run: |
-          cp app/build/outputs/apk/release/*.apk app/build/outputs/apk/release/app-release.apk
-          fastlane supply --apk app/build/outputs/apk/release/app-release.apk --rollout $ROLL_OUT_PERCENTAGE
+          lane: 'deploy'
 
       - name: Slack Notification - Release successfully published to Google Play Store
         uses: rtCamp/action-slack-notify@master
@@ -135,3 +130,4 @@ jobs:
           SLACK_MESSAGE: "has been uploaded on Google Play Store. Initial roll-out at ${{ secrets.ROLL_OUT_PERCENTAGE }} :tada:"
           SLACK_USERNAME: DeployerBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
+

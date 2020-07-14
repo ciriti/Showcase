@@ -88,6 +88,8 @@ The initial roll-out of a new release start a 10% of the users
 fastlane supply --apk app/build/outputs/apk/release/*.apk --rollout 0.1
 ```
 
+test
+
 
 
 
