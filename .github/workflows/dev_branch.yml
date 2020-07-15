@@ -84,3 +84,28 @@ jobs:
           SLACK_TITLE:  ${{ steps.extract_branch.outputs.branch }}
           SLACK_USERNAME: DeployerBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
+
+      - name: Build staging artifact for beta release
+        run: |
+          ./gradlew assembleStaging
+          mv app/build/outputs/apk/staging/*.apk app/build/outputs/apk/staging/app-staging.apk
+
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: testers
+          releaseNotesFile: release_note.txt
+          file: app/build/outputs/apk/staging/app-staging.apk
+
+      - name: Slack notification - Beta release successfully uploaded
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_CHANNEL: derdiedas
+          SLACK_COLOR: '#2EB886'
+          SLACK_ICON: https://raw.githubusercontent.com/ciriti/BooksApp/master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+          SLACK_TITLE:  Staging artifact
+          SLACK_MESSAGE: 'has been uploaded on App Distribution :tada:'
+          SLACK_USERNAME: DeployerBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
