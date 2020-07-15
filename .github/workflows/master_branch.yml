@@ -115,6 +115,10 @@ jobs:
           SLACK_USERNAME: DeployerBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEB_HOOK_URL }}
 
+      - name: Cleaning project
+        run: |
+          ./gradlew clean
+
       - name: Fastlane build the release artifact
         uses: maierj/fastlane-action@v1.4.0
         with:
