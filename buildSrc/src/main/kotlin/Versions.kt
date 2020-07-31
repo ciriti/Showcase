@@ -13,7 +13,7 @@ object Versions {
 
     const val cardview: String = "1.0.0"
 
-    const val constraintlayout: String = "2.0.0-beta2" // exceed the version found: 1.1.3
+    const val constraintlayout: String = "2.0.0-rc1" // exceed the version found: 1.1.3
 
     const val core_ktx: String = "1.0.2" //available: "1.1.0"
 
