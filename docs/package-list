@@ -1,0 +1,14 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+
+com.ciriti.bookapp
+com.ciriti.bookapp.core
+com.ciriti.bookapp.di
+com.ciriti.bookapp.ui.bookdetails
+com.ciriti.bookapp.ui.bookslist
+com.ciriti.bookapp.ui.bookslist.components
+com.ciriti.datalayer.database
+com.ciriti.datalayer.network
+com.ciriti.datalayer.service
+com.ciriti.datalayer.util
+

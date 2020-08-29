@@ -1,37 +1,22 @@
-## Welcome to GitHub Pages
+//[project](index.md)
 
-You can use the [editor on GitHub](https://github.com/ciriti/Showcase/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+# project  
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+## Packages  
+  
+|  Name|  Summary| 
+|---|---|
+| [com.ciriti.bookapp](com.ciriti.bookapp/index.md) | 
+| [com.ciriti.bookapp.core](com.ciriti.bookapp.core/index.md) | 
+| [com.ciriti.bookapp.di](com.ciriti.bookapp.di/index.md) | 
+| [com.ciriti.bookapp.ui.bookdetails](com.ciriti.bookapp.ui.bookdetails/index.md) | 
+| [com.ciriti.bookapp.ui.bookslist](com.ciriti.bookapp.ui.bookslist/index.md) | 
+| [com.ciriti.bookapp.ui.bookslist.components](com.ciriti.bookapp.ui.bookslist.components/index.md) | 
+| [com.ciriti.datalayer.database](com.ciriti.datalayer.database/index.md) | 
+| [com.ciriti.datalayer.network](com.ciriti.datalayer.network/index.md) | 
+| [com.ciriti.datalayer.service](com.ciriti.datalayer.service/index.md) | 
+| [com.ciriti.datalayer.util](com.ciriti.datalayer.util/index.md) | 
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ciriti/Showcase/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

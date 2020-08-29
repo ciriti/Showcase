@@ -3,7 +3,7 @@
 
 ## Code quality
 [![CodeFactor](https://www.codefactor.io/repository/github/ciriti/showcase/badge)](https://www.codefactor.io/repository/github/ciriti/showcase)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a669f1b025ce42cfa8cb82e47f5d91c9)](https://www.codacy.com/manual/ciriti/BooksApp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ciriti/BooksApp&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d834c8ae4812451a9f5928149a8a8fa5)](https://www.codacy.com/manual/ciriti/Showcase?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ciriti/Showcase&amp;utm_campaign=Badge_Grade)
 
 ## App status
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/ciriti/Showcase?color=brightgreen&label=latest%20release)
