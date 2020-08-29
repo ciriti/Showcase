@@ -1,0 +1,15 @@
+task cleanDocs(type: Delete){
+    shouldRunAfter dokkaGfmCollector
+    delete 'docs'
+}
+
+task createDocs(type : Copy){
+
+    group "documentation"
+    description "Create docs"
+
+    dependsOn = ['dokkaGfmCollector', 'cleanDocs']
+
+    from "${project.getBuildDir()}/dokka/gfmCollector/project"
+    into 'docs'
+}

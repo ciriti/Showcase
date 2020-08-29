@@ -5,11 +5,11 @@ on:
     branches:
       - develop
       - 'feature/**'
-#    paths:
-#      - '!README.md'
-#      - '!art/**'
-#  pull_request:
-#    types: [opened, synchronize]
+    paths:
+      - '!README.md'
+      - '!art/**'
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   build:
