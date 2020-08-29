@@ -39,6 +39,7 @@ jobs:
           echo $KEYSTORE_RELEASE > encoded_release
           base64 -d encoded_release > keystore.jks
           echo $GOOGLE_PLAY_KEY_PUBLISH > google_play_key.json
+          cat google_play_key.json
           echo $GOOGLE_SERVICES > app/google-services.json
           chmod +x ./gradlew
 #          ./gradlew assembleDebugAndroidTest
