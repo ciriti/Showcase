@@ -44,27 +44,27 @@ jobs:
           ./gradlew assembleDebugAndroidTest
           ./gradlew assembleDebug
 
-      - name: Unit Test
-        run: |
-          ./gradlew :app:test :data:test
-
-      - name: Instrumentation Test - Firebase Test Lab
-        run: |
-          export GRADLE_USER_HOME=$(pwd)/.gradle
-          yes | sdkmanager --licenses && yes | sdkmanager --update
-          wget --quiet --output-document=/tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
-          mkdir -p /opt
-          tar zxf /tmp/google-cloud-sdk.tar.gz --directory /opt
-          /opt/google-cloud-sdk/install.sh --quiet
-          source /opt/google-cloud-sdk/path.bash.inc
-          gcloud components update
-          gcloud config set project $PROJECT_ID
-          echo $SERVICE_ACCOUNT > /tmp/service-account.json
-          gcloud auth activate-service-account --key-file /tmp/service-account.json
-          cp app/build/outputs/apk/debug/app-debug.apk ./app-debug.apk
-          cp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk ./app-debug-androidTest.apk
-          yes | sdkmanager --licenses && yes | sdkmanager --update
-          gcloud firebase test android run   --type instrumentation   --app app-debug.apk   --test app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
+#      - name: Unit Test
+#        run: |
+#          ./gradlew :app:test :data:test
+#
+#      - name: Instrumentation Test - Firebase Test Lab
+#        run: |
+#          export GRADLE_USER_HOME=$(pwd)/.gradle
+#          yes | sdkmanager --licenses && yes | sdkmanager --update
+#          wget --quiet --output-document=/tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.tar.gz
+#          mkdir -p /opt
+#          tar zxf /tmp/google-cloud-sdk.tar.gz --directory /opt
+#          /opt/google-cloud-sdk/install.sh --quiet
+#          source /opt/google-cloud-sdk/path.bash.inc
+#          gcloud components update
+#          gcloud config set project $PROJECT_ID
+#          echo $SERVICE_ACCOUNT > /tmp/service-account.json
+#          gcloud auth activate-service-account --key-file /tmp/service-account.json
+#          cp app/build/outputs/apk/debug/app-debug.apk ./app-debug.apk
+#          cp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk ./app-debug-androidTest.apk
+#          yes | sdkmanager --licenses && yes | sdkmanager --update
+#          gcloud firebase test android run   --type instrumentation   --app app-debug.apk   --test app-debug-androidTest.apk   --device model=walleye,version=28,locale=en,orientation=portrait
 
       - name: Extract branch name
         shell: bash
