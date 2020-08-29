@@ -8,8 +8,8 @@ on:
     paths:
       - '!README.md'
       - '!art/**'
-#  pull_request:
-#    types: [opened, synchronize]
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
   build:
