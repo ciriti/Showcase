@@ -28,6 +28,7 @@ plugins {
     // Find latest version at https://plugins.gradle.org/plugin/jmfayard.github.io.gradle-kotlin-dsl-libs
     id("jmfayard.github.io.gradle-kotlin-dsl-libs") version "0.2.6" // $ ./gradlew syncLibs
     id 'de.nanogiants.android-versioning' version '2.3.1'
+    id("org.jetbrains.dokka") version "1.4.0-rc"
 }
 
 allprojects {
@@ -48,4 +49,8 @@ ext {
     compileSdkVersion = 28
     minSdkVersion = 23
     moduleMinSdkVersion = 15
+}
+
+dokkaGfmCollector{
+    outputDirectory = "dokka"
 }
