@@ -3,7 +3,7 @@ name: google play release
 on:
   push:
     branches:
-      - master
+      - master_disabled
 #    paths:
 #      - '!README.md'
 #      - '!art/**'

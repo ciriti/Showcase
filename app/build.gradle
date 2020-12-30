@@ -75,3 +75,10 @@ versioning {
     excludeBuildTypes = "debug" // default: null
 }
 
+task versionTxt{
+    group = "release-utility"
+    doLast{
+        new File(projectDir, "version.txt").text = versioning.getVersionName()
+    }
+}
+
