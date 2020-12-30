@@ -52,3 +52,4 @@ ext {
 }
 
 apply from: rootDir.path + '/buildfile/projects_docs.gradle'
+apply from: rootDir.path + '/buildfile/test-kotlin.gradle.kts'

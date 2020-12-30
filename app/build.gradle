@@ -8,6 +8,7 @@ apply plugin: 'de.nanogiants.android-versioning' //https://github.com/nanogiants
 apply plugin: 'org.jetbrains.dokka'
 
 apply from: rootDir.path + '/buildfile/signing_configs.gradle'
+apply from: rootDir.path + '/buildfile/test-kotlin.gradle.kts'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion

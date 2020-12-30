@@ -32,3 +32,4 @@ android {
 apply from: rootDir.path + '/buildfile/gradle_variable.gradle'
 apply from: rootDir.path + '/buildfile/shared_dependencies.gradle'
 apply from: rootDir.path + '/buildfile/shared_dependencies_test.gradle'
+apply from: rootDir.path + '/buildfile/test-kotlin.gradle.kts'
