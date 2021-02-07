@@ -2,6 +2,7 @@
 # [Books App](https://play.google.com/store/apps/details?id=com.ciriti.bookapp)
 
 ## Code quality
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/67663f3940974e0cb0ff07b39921199b)](https://app.codacy.com/manual/ciriti/Showcase?utm_source=github.com&utm_medium=referral&utm_content=ciriti/Showcase&utm_campaign=Badge_Grade_Dashboard)
 [![CodeFactor](https://www.codefactor.io/repository/github/ciriti/showcase/badge)](https://www.codefactor.io/repository/github/ciriti/showcase)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d834c8ae4812451a9f5928149a8a8fa5)](https://www.codacy.com/manual/ciriti/Showcase?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ciriti/Showcase&amp;utm_campaign=Badge_Grade)
 
