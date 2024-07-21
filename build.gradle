@@ -19,6 +19,7 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.3'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0'
         classpath 'de.nanogiants:android-versioning:2.3.1'
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.9.20"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -28,7 +29,7 @@ plugins {
     // Find latest version at https://plugins.gradle.org/plugin/jmfayard.github.io.gradle-kotlin-dsl-libs
     id("jmfayard.github.io.gradle-kotlin-dsl-libs") version "0.2.6" // $ ./gradlew syncLibs
     id 'de.nanogiants.android-versioning' version '2.3.1'
-    id("org.jetbrains.dokka") version "1.4.0-rc"
+    id "org.jetbrains.dokka" version "1.9.20"
 }
 
 allprojects {
